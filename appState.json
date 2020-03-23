@@ -1,0 +1,76 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "c5d40619-3a78-451f-9516-604c1d169e31": {
+        "id": "c5d40619-3a78-451f-9516-604c1d169e31",
+        "parent": null,
+        "name": "Avanka.py",
+        "type": "PYTHON_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "Avanka.py",
+        "cursor": {
+          "lineNumber": 4,
+          "column": 43
+        },
+        "config": {
+          "runtime": "python2.7",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": [],
+        "testCases": {
+          "2abc0c99-0ecb-46e3-a637-f14e72418a1b": {
+            "id": "2abc0c99-0ecb-46e3-a637-f14e72418a1b",
+            "name": "Test ",
+            "functionId": "c5d40619-3a78-451f-9516-604c1d169e31",
+            "event": "{\"key1\": \"value1\", \"key2\": \"value2\", \"key3\": \"value3\"}",
+            "eventTemplate": "hello-world"
+          }
+        }
+      }
+    },
+    "openFiles": [
+      "c5d40619-3a78-451f-9516-604c1d169e31"
+    ],
+    "currentFileId": "c5d40619-3a78-451f-9516-604c1d169e31",
+    "resources": {},
+    "customTemplate": {
+      "dialect": null,
+      "definitions": null
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {}
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "Avanka",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "language": "python",
+    "platformRegions": {},
+    "lastSave": 1584958670604
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "avanka",
+      "url": "https://github.com/avankaminion/avanka"
+    }
+  }
+}
