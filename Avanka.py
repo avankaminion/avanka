@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # This is a simple Hello World Alexa Skill, built using
 # the implementation of handler classes approach in skill builder.
 import logging
