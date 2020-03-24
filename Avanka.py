@@ -27,7 +27,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speech_text = "Welcome to the Alexa Skills Kit, you can say hello!"
+        speech_text = "Welcome to Avankas animal game, you can say hello!"
 
         handler_input.response_builder.speak(speech_text).set_card(
             SimpleCard("Hello World", speech_text)).set_should_end_session(
@@ -43,7 +43,7 @@ class HelloWorldIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speech_text = "Hello Python World from Classes!"
+        speech_text = "Hello from Chinese Animal game from Avanka!"
 
 
 
@@ -63,7 +63,7 @@ class ChineseAnimalIntentHandler(AbstractRequestHandler):
     
         speech_text = "Your chinese animal is "
 
-        print handler_input
+        print (handler_input)
         """
         try:
                 data = ddb.get_item(
@@ -166,6 +166,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
 
 
 sb.add_request_handler(LaunchRequestHandler())
+sb.add_request_handler(ChineseAnimalIntentHandler())
 sb.add_request_handler(HelloWorldIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
