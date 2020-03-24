@@ -11,8 +11,8 @@
         "isRemovable": true,
         "filePath": "Avanka.py",
         "cursor": {
-          "lineNumber": 55,
-          "column": 14
+          "lineNumber": 81,
+          "column": 46
         },
         "config": {
           "runtime": "python3.7",
@@ -37,7 +37,42 @@
       "c5d40619-3a78-451f-9516-604c1d169e31"
     ],
     "currentFileId": "c5d40619-3a78-451f-9516-604c1d169e31",
-    "resources": {},
+    "resources": {
+      "ddbChineseAnimal": {
+        "name": "ddbChineseAnimal",
+        "type": "DynamoDB",
+        "config": {
+          "mode": 1,
+          "operation": "get",
+          "table": {
+            "arn": "arn:aws:dynamodb:us-east-1:263248768798:table/ChineseAnimal",
+            "name": "ChineseAnimal",
+            "partitionKey": "BirthYear",
+            "partitionKeyType": "N",
+            "hasSortKey": true,
+            "sortKey": "ChineseAnimal",
+            "sortKeyType": "S",
+            "payPerRequest": true,
+            "mode": 1
+          },
+          "isGlobalEditMode": false,
+          "parameters": {
+            "Key": {
+              "BirthYear": "@{year}",
+              "ChineseAnimal": "x"
+            },
+            "Item": {},
+            "ExpressionAttributeValues": {}
+          },
+          "triggerParams": {},
+          "validator": {
+            "validatableFields": {},
+            "validity": true
+          },
+          "valid": true
+        }
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": null
@@ -65,6 +100,13 @@
           "version": "1.22.0",
           "dev": false,
           "language": "python"
+        },
+        "boto3": {
+          "name": "boto3",
+          "language": "python",
+          "version": "1.9.6",
+          "dev": true,
+          "notRemovable": false
         }
       }
     }
@@ -77,7 +119,7 @@
     "platform": "AWS",
     "language": "python",
     "platformRegions": {},
-    "lastSave": 1584961329666
+    "lastSave": 1585036711316
   },
   "VCS_STATE": {
     "provider": "GitHub",

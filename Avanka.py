@@ -1,3 +1,5 @@
+import boto3
+ddb = boto3.client("dynamodb")
 # This is a simple Hello World Alexa Skill, built using
 # the implementation of handler classes approach in skill builder.
 import logging
@@ -43,10 +45,45 @@ class HelloWorldIntentHandler(AbstractRequestHandler):
         # type: (HandlerInput) -> Response
         speech_text = "Hello Python World from Classes!"
 
+
+
         handler_input.response_builder.speak(speech_text).set_card(
             SimpleCard("Hello World", speech_text)).set_should_end_session(
             True)
         return handler_input.response_builder.response
+
+class ChineseAnimalIntentHandler(AbstractRequestHandler):
+    """Handler for Chinese Animal Intent."""
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return is_intent_name("ChineseAnimalIntent")(handler_input)
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+    
+        speech_text = "Your chinese animal is "
+
+        print handler_input
+        """
+        try:
+                data = ddb.get_item(
+                    TableName="ChineseAnimal",
+                    Key={
+                        'BirthYear': {
+                            'N': year
+                        }
+                    }
+                )
+            except BaseException as e:
+                print(e)
+                raise(e)
+        """
+        speech_text = "Your animal is a mouse!"
+
+        handler_input.response_builder.speak(speech_text).ask(
+            speech_text).set_card(SimpleCard(
+                "Hello World", speech_text))
+        return handler_input.response_builder.response    
 
 
 class HelpIntentHandler(AbstractRequestHandler):
@@ -93,8 +130,7 @@ class FallbackIntentHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         speech_text = (
-            "The Hello World skill can't help you with that.  "
-            "You can say hello!!")
+            "The Hello World skill can't help you with that.You can say hello!!")
         reprompt = "You can say hello!!"
         handler_input.response_builder.speak(speech_text).ask(reprompt)
         return handler_input.response_builder.response
