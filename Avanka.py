@@ -1,4 +1,5 @@
 import boto3
+import json
 ddb = boto3.client("dynamodb")
 # This is a simple Hello World Alexa Skill, built using
 # the implementation of handler classes approach in skill builder.
@@ -61,24 +62,26 @@ class ChineseAnimalIntentHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
     
-        speech_text = "Your chinese animal is "
+       
+        
+        year = handler_input.request_envelope.request.intent.slots['year'].value
 
-        print (handler_input)
-        """
         try:
-                data = ddb.get_item(
-                    TableName="ChineseAnimal",
-                    Key={
-                        'BirthYear': {
-                            'N': year
-                        }
+            data = ddb.get_item(
+                TableName="ChineseAnimal",
+                Key={
+                    'BirthYear': {
+                        'N': year
                     }
-                )
-            except BaseException as e:
-                print(e)
-                raise(e)
-        """
-        speech_text = "Your animal is a mouse!"
+                }
+            )
+        except BaseException as e:
+            print(e)
+            raise(e)
+    
+        speech_text = "Your animal is a : " + json.dumps(data['Item']['Animal']['S'])
+        #json.dumps(data)
+        print (speech_text)
 
         handler_input.response_builder.speak(speech_text).ask(
             speech_text).set_card(SimpleCard(
