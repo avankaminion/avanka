@@ -28,7 +28,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speech_text = "Welcome to Avankas animal game, you can say hello!"
+        speech_text = "Welcome to Avanka's animal game, you can find out which chinese animal you are."
 
         handler_input.response_builder.speak(speech_text).set_card(
             SimpleCard("Hello World", speech_text)).set_should_end_session(
@@ -61,15 +61,12 @@ class ChineseAnimalIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-    
-       
         
         year = handler_input.request_envelope.request.intent.slots['year'].value
-
         try:
             data = ddb.get_item(
                 TableName="ChineseAnimal",
-                Key={
+                Key = {
                     'BirthYear': {
                         'N': year
                     }
@@ -78,8 +75,9 @@ class ChineseAnimalIntentHandler(AbstractRequestHandler):
         except BaseException as e:
             print(e)
             raise(e)
-    
-        speech_text = "Your animal is a : " + json.dumps(data['Item']['Animal']['S'])
+
+        speech_text = "Your animal is a " + data['Item']['Animal']['S'] + '. Wanna know something else? Apparently you are ' + data['Item']['PersonalityTraits']['S']
+              
         #json.dumps(data)
         print (speech_text)
 
